@@ -10,6 +10,7 @@
 require 'inc/class-pb-log.php';
 require 'inc/class-flexyapress-api.php';
 require 'inc/class-flexyapress-helpers.php';
+require 'inc/pb_updater.php';
 
 if ( ! defined( '_S_VERSION' ) ) {
     // Replace the version number of the theme on each release.
