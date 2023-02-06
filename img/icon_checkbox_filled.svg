@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Actions / Toggle / checkbox / 24 Copy 2</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Input-field-/-Multiple-options" transform="translate(-13.000000, -183.000000)">
+            <g id="Actions-/-Toggle-/-checkbox-/-24-Copy" transform="translate(10.000000, 180.000000)">
+                <path d="M19.5,3 L4.5,3 C3.67157288,3 3,3.67157288 3,4.5 L3,19.5 C3,20.3284271 3.67157288,21 4.5,21 L19.5,21 C20.3284271,21 21,20.3284271 21,19.5 L21,4.5 C21,3.67157288 20.3284271,3 19.5,3 Z M10.5,16.125 L6.75,12.407025 L7.9431,11.25 L10.5,13.7592 L16.056525,8.25 L17.250375,9.4329 L10.5,16.125 Z" id="Fill" fill="#9B7250"></path>
+                <polygon id="Inner-Fill" fill="#000000" opacity="0" points="10.5 16.125 6.75 12.407025 7.9431 11.25 10.5 13.7592 16.056525 8.25 17.250375 9.4329"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

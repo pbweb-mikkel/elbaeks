@@ -1,0 +1,50 @@
+$size__site-main: 100%;
+$size__site-sidebar: 25%;
+
+$mobile-small : 576px;
+$mobile: 767px;
+$tablet: 992px;
+$desktop: 1200px;
+$desktop-large: 1366px;
+
+$mobile-small: 576px;
+$mobile: 768px;
+$tablet: 992px;
+$desktop: 1200px;
+$desktop-large: 1560px;
+
+@mixin screen($size, $type: min, $pixels: $mobile-small) {
+  @if $size == 'mobile-small' {
+    @media screen and ($type + -width: $mobile-small) {
+        @content;
+    }
+  }
+  @else if $size == 'mobile' {
+    @media screen and ($type + -width: $mobile) {
+        @content;
+    }
+  }
+  @else if $size == 'tablet' {
+    @media screen and ($type + -width: $tablet) {
+        @content;
+    }
+  }
+ @else if $size == 'desktop' {
+    @media screen and ($type + -width: $desktop) {
+        @content;
+    }
+  }
+ @else if $size == 'desktop-large' {
+    @media screen and ($type + -width: $desktop-large) {
+        @content;
+    }
+  }
+  @else if $size == 'custom' {
+    @media screen and ($type + -width: $pixels + px) {
+     @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}

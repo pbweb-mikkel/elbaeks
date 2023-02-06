@@ -1,0 +1,2 @@
+let defaultTransitionLeave = (container) => {gsap.timeline().to(container, {duration:0.4, autoAlpha:0});};
+let defaultTransitionEnter = (container) =>  {gsap.timeline().from(container, {duration: 0.4,autoAlpha:0});};

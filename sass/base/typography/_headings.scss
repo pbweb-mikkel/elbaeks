@@ -1,0 +1,24 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 500;
+	clear: both;
+	font-family: $roman;
+}
+
+
+h1{
+	@include font-size(60px);
+	line-height: 1.13;
+}
+h2{
+	@include font-size(36px);
+	line-height: 1.22;
+}
+h3{
+	@include font-size(32px);
+	line-height: 1.25;
+}

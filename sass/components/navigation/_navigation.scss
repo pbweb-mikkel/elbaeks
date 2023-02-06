@@ -1,0 +1,924 @@
+#masthead {
+    position: fixed;
+    // position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    @include padding(12px 0);
+    @include margin-bottom(35px);
+    z-index: 99;
+    transition: all 0.3s ease;
+    height: 116px;
+    display: flex;
+    align-items: center;
+
+    @include screen(mobile) {
+        // height: 126px;
+    }
+
+    @include screen(desktop) {
+        background: #03331E;
+    }
+}
+
+.scrollBottom {
+    opacity: 1;
+    visibility: visible;
+
+    #masthead {
+        transform: translateY(-120%);
+    }
+}
+
+.headerBar__logo svg {
+    transition: all 0.3s ease;
+}
+
+.hamburger {
+    position: absolute;
+    top: 10px;
+    right: 2px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 10px;
+    height: 60px;
+    width: 60px;
+    // background: $ac;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        height: 40px;
+        width: 40px;
+    }
+
+    .line {
+        fill: none;
+        stroke: $gold;
+        stroke-width: 6;
+        transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+            stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .line1 {
+        stroke-dasharray: 60 207;
+        stroke-width: 6;
+    }
+
+    .line2 {
+        stroke-dasharray: 60 60;
+        stroke-width: 6;
+    }
+
+    .line3 {
+        stroke-dasharray: 60 207;
+        stroke-width: 6;
+    }
+
+}
+
+.menuOpened {
+    .hamburger {
+
+        .line1 {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+            stroke-width: 6;
+        }
+
+        .line2 {
+            stroke-dasharray: 1 60;
+            stroke-dashoffset: -30;
+            stroke-width: 6;
+        }
+
+        .line3 {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+            stroke-width: 6;
+        }
+    }
+
+    .headerBar__logo {
+        transform: scale(1) !important;
+    }
+}
+
+.scrollTop {
+    opacity: 1;
+    visibility: visible;
+
+    &.stickyHeader #menu-menu>li>a {
+        text-shadow: none;
+    }
+
+    .headerBar__logo svg {
+        fill: #9c7250 !important;
+    }
+
+    #masthead {
+
+        // background: #fef9f4;
+        .menu-menu-container #menu-menu>li>a,
+        .home #masthead .menu-menu-container #menu-menu>li>a {
+            color: $gold;
+        }
+    }
+
+    &.stickyHeader {
+
+        #masthead .menu-menu-container #menu-menu>li>a,
+        .home #masthead .menu-menu-container #menu-menu>li>a {
+            color: $gold;
+        }
+
+        &.stickyHeader,
+        &.home {
+            .menu-menu-container #menu-menu>li.menu-item-has-children>a:after {
+                background-image: url("/wp-content/themes/elbaeks/img/chevron--right--gold.svg");
+            }
+        }
+    }
+}
+
+.headerBar {
+    display: flex;
+    align-items: center;
+
+    &__logo {
+        display: flex;
+
+        svg {
+            min-width: 100px;
+            min-height: 100px;
+            width: 100px;
+            height: 100px;
+            fill: #9C7250;
+        }
+    }
+
+    @include screen(mobile) {
+        &__logo {
+            margin-right: 15px;
+            /*            svg{
+                min-width: 100px;
+                min-height: 100px;
+                width: 100px;
+                height: 100px;
+            }*/
+        }
+    }
+
+    @include screen(desktop) {
+        &__logo {
+            svg {
+                min-width: 86px;
+                min-height: 86px;
+                width: 86px;
+                height: 86px;
+            }
+        }
+    }
+}
+
+.stickyHeader {
+    #menu-menu {
+        >li {
+            // margin: 0 12px;
+
+            >a {
+                // @include font-size(20px);
+                // font-weight: 500;
+                // line-height: 1;
+            }
+        }
+    }
+}
+
+.menu-menu-container {
+    a {
+        color: $gold;
+    }
+
+    #menu-menu {
+        >li {
+            margin: 0 12px;
+
+            >a {
+                @include font-size(20px);
+                font-weight: 500;
+                line-height: 1;
+                // text-shadow: 1px 0px 0 rgba(0, 0, 0, 0.3);
+            }
+        }
+    }
+
+    .sub-menu {
+        display: flex;
+        flex-direction: column;
+
+        li:last-child {
+            a {
+                border-bottom: none;
+            }
+        }
+
+        a {
+            @include font-size(18px);
+            // text-shadow: 1px 0 0 rgba(0, 0, 0, 0.3);
+            font-weight: 500;
+            border-bottom: 1px solid $gold;
+            @include padding(10px 0);
+            line-height: 1;
+
+            &:hover {
+                // color: $green;
+            }
+        }
+    }
+    @include screen(desktop) {
+        width: 100%;
+
+        > li > .sub-menu{
+            @include margin-left(-30px);
+        }
+        .sub-menu {
+            background: $green;
+            @include padding(15px 30px 16px);
+            transform: translateY(10px);
+            a{
+                width: 310px;
+                @include font-size(20px);
+                @include padding(14px 0);
+                border:none;
+            }
+
+            .menu-item-has-children {
+                > a {
+                    display: flex;
+                    justify-content: space-between;
+                    &:after {
+                        content: "";
+                        background-image: url(/wp-content/themes/elbaeks/img/chevron--right--gold.svg);
+                        margin-left: 8px;
+                        width: 18px;
+                        height: 18px;
+                        background-repeat: no-repeat;
+                        display: inline-block;
+                        background-size: contain;
+                        transform: rotate(90deg);
+                        transition: transform .3s ease;
+                    }
+                }
+                .sub-menu{
+                    position: relative;
+                    padding: 0;
+                    max-height: 0;
+                    height: 100%;
+                    overflow: hidden;
+                    transition:all 0.2s ease;
+                    float:none;
+                    left: 0;
+                    a{
+                        border-bottom:none;
+                        padding: 0;
+                        line-height: 1.9;
+                    }
+                    &:after{
+                        position: relative;
+                        height: 15px;
+                        width: 100%;
+                        content:"";
+                        display: block;
+                    }
+                    li:first-child{
+                        border-top:1px solid $gold;
+                        padding-top: 8px;
+                    }
+                    li:last-child{
+                        padding-bottom: 15px;
+                        border-bottom:1px solid $gold;
+                    }
+                }
+                &.openSubmenu{
+                    .sub-menu{
+                        max-height: 400px;
+                    }
+                }
+                &:last-child{
+                    li:last-child{
+                        border:none;
+                    }
+                }
+                // &:hover{
+                //     .sub-menu{
+                //         max-height: 500px;
+                //     }
+                // }
+            }
+        }
+
+        #menu-menu {
+            justify-content: space-between;
+            padding: 0;
+            max-width: 100%;
+
+            >li {
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                &.menu-item-has-children {
+
+                    &:hover {
+                        > a:after {
+                            transform: rotate(-90deg);
+                        }
+                    }
+
+                    >a {
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+
+                        &:before {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            bottom: -20px;
+                            left: 0;
+                            content: "";
+                            display: block;
+                        }
+
+                        &:after {
+                            content: "";
+                            background-image: url("/wp-content/themes/elbaeks/img/chevron--right--gold.svg");
+                            margin-left: 8px;
+                            width: 18px;
+                            height: 18px;
+                            background-repeat: no-repeat;
+                            display: inline-block;
+                            background-size: contain;
+                            transform: rotate(90deg);
+                            transform-origin: center;
+                            transition: transform 0.3s ease;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main-navigation {
+    display: block;
+    width: 100%;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+        display: flex;
+
+        ul {
+            float: left;
+            position: absolute;
+            top: 100%;
+            left: -999em;
+            z-index: 99999;
+
+            ul {
+                left: -999em;
+                top: 0;
+            }
+
+            li {
+
+                &:hover>ul,
+                &.focus>ul {
+                    display: block;
+                    left: auto;
+                }
+            }
+
+            a {
+                width: 185px;
+            }
+
+            :hover>a,
+            .focus>a {}
+
+            a:hover,
+            a.focus {}
+        }
+
+        li:hover>ul,
+        li.focus>ul {
+            left: auto;
+        }
+    }
+
+    li {
+        position: relative;
+
+        &:hover>a,
+        &.focus>a {}
+    }
+
+    .menu-menu-container a {
+        display: block;
+        font-family: $roman;
+        text-decoration: none;
+    }
+
+    .current_page_item>a,
+    .current-menu-item>a,
+    .current_page_ancestor>a,
+    .current-menu-ancestor>a {}
+}
+
+/* Small menu. */
+.mobileMenuPage .menu-toggle,
+.main-navigation.toggled ul {
+    display: block;
+}
+
+.mobileMenuPage .menu-menu-container #menu-menu {
+    @extend .container;
+}
+
+@media (min-width: 1200px) and (max-width: 1319.5px) {
+    .menu-menu-container #menu-menu>li {
+        margin: 0 10px !important;
+
+        >a {
+            font-size: 17px;
+        }
+    }
+
+    .menu-menu-container .sub-menu a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1199.5px) {
+
+    .home .headerBar__logo{
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+
+    .scrollTop #masthead,
+    .scrollBottom #masthead {
+        background-color: transparent;
+
+        .headerBar__logo {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    body.menuOpened #masthead {
+        .headerBar__logo {
+            opacity: 1;
+            visibility: visible;
+
+            svg {
+                transition: opacity 0.2s ease;
+            }
+        }
+    }
+
+    .headerBar__logo {
+        z-index: 1000;
+        opacity: 1;
+        visibility: visible;
+
+        svg {
+            transition: none;
+        }
+    }
+    .menu-menu-container #menu-menu>li > ul > li > ul > li{
+        > a{
+            padding-left: 15px;
+        }
+        > ul{
+            li a{
+                padding-left: 15px;
+            }
+        }
+    }
+    .burgerContainer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 100%;
+        z-index: 9999;
+    }
+
+    .main-navigation {
+        .headerBar__logo {
+            display: flex;
+        }
+    }
+
+    .menu-menu-container {
+        opacity: 0;
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: $green;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        z-index: 999;
+        overflow: scroll;
+        height: 100%;
+        min-height: 100vh;
+        padding-top: 150px;
+        padding-bottom: 60px;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        ul.sub-menu {
+            margin-top: 10px;
+            margin-left: 20px;
+            left: 0;
+            top: 0;
+            position: relative;
+
+            a {
+                @include font-size(16px);
+                border: none;
+            }
+        }
+
+        #menu-menu {
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+
+            // padding-top: 120px;
+            a {
+                max-width: 100%;
+                padding: 15px 0;
+            }
+
+            li {
+                border-bottom: 1px solid $gold;
+            }
+
+            li.menu-item-has-children {
+                position: relative;
+                border-bottom: none;
+                max-height: 48px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 46px;
+                    width: 100%;
+                    height: 1px;
+                    background: $gold;
+                    display: block;
+                }
+
+                &:after {
+                    content: "";
+                    background-image: url("/wp-content/themes/elbaeks/img/chevron--right--gold.svg");
+                    margin-left: 8px;
+                    width: 18px;
+                    height: 18px;
+                    background-repeat: no-repeat;
+                    display: inline-block;
+                    background-size: contain;
+                    transform: rotate(90deg);
+                    transform-origin: center;
+                    transition: transform 0.3s ease;
+                    position: absolute;
+                    top: 14px;
+                    right: 0;
+                    margin: auto;
+                }
+
+                &.openSubmenu {
+                    max-height: 520px;
+
+                    &:after {
+                        transform: rotate(-90deg);
+                    }
+                }
+            }
+
+            >li {
+                margin: 0;
+                height: 100%;
+
+                >a {
+                    @include font-size(18px);
+                }
+
+                li {
+                    width: 100%;
+                }
+
+                ul {
+                    width: 100%;
+                    margin: 0;
+
+                    a {
+                        padding-left: 10px;
+                        width: 100%;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: none;
+
+                    &:before {
+                        top: 48px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .stickyHeader {
+        // #menu-menu {
+        //     >li {
+        //         margin: 0 15px;
+
+        //         >a {
+        //             text-shadow: 1px 0px 0 rgba(0, 0, 0, 0.3);
+        //         }
+        //     }
+        // }
+    }
+    .menu-menu-container #menu-menu>li > ul{
+        margin-left: -30px;
+    }
+
+    .mobileMenuPage {
+
+        #masthead {
+            background-color: transparent;
+        }
+
+        .menu-menu-container #menu-menu>li.menu-item-has-children>a:after {
+            display: none;
+        }
+        &.scrollTop #masthead,
+        &.scrollBottom #masthead {
+            background-color: transparent;
+
+            .headerBar__logo {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        &.menuOpened #masthead {
+            .headerBar__logo {
+                opacity: 1;
+                visibility: visible;
+
+                svg {
+                    transition: opacity 0.2s ease;
+                }
+            }
+        }
+
+        &.menuOpened{
+            .menu-menu-container{
+                transform:translateX(0%);
+            }
+            #primary{
+                .type-sag{
+                    transform:translateX(-400px);
+                }
+            }
+        }
+        #primary .type-sag, .menu-menu-container{
+            transition:transform 0.3s linear;
+        }
+
+        .menu-menu-container #menu-menu {
+            padding-left: 30px !important;
+
+            >li ul {
+                padding-top: 0;
+            }
+        }
+        .menu-menu-container #menu-menu>li > ul > li > ul > li{
+            > a{
+                padding-left: 15px;
+            }
+            > ul{
+                li a{
+                    padding-left: 15px;
+                }
+            }
+        }
+
+        .headerBar__logo {
+            z-index: 1000;
+            opacity: 1;
+            visibility: visible;
+
+            svg {
+                fill: $ac;
+                transition: none;
+            }
+        }
+
+        .burgerContainer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        .main-navigation {
+            .headerBar__logo {
+                display: flex;
+            }
+        }
+        .menu-menu-container .sub-menu .menu-item-has-children>a:after{
+            display: none;
+        }
+        .menu-menu-container #menu-menu>li ul{
+            padding: 0;
+        }
+        .menu-menu-container #menu-menu > li > .sub-menu > li, .menu-menu-container .sub-menu .menu-item-has-children .sub-menu li:first-child{
+            border:none;
+        }
+
+        .menu-menu-container #menu-menu>li>ul>li>ul>li>a{
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .menu-menu-container {
+            transform:translateX(100%);
+            // opacity: 0;
+            // visibility: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: $green;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            z-index: 999;
+            overflow: scroll;
+            height: 100%;
+            min-height: 100vh;
+            padding-top: 150px;
+            padding-bottom: 60px;
+
+            max-width: 400px;
+            right: 0;
+            left: auto;
+            overflow:auto;
+            ul {
+                display: flex;
+                flex-direction: column;
+            }
+
+            ul.sub-menu {
+                margin-top: 10px;
+                margin-left: 20px;
+                left: 0;
+                top: 0;
+                position: relative;
+
+                a {
+                    @include font-size(18px);
+                    border: none;
+                }
+            }
+
+            #menu-menu {
+                width: 100%;
+                padding-left: 20px;
+                padding-right: 20px;
+
+                // padding-top: 120px;
+                a {
+                    max-width: 100%;
+                    padding: 20px 0;
+                }
+
+                 > li {
+                    border-bottom: 1px solid $gold;
+                }
+
+                li.menu-item-has-children {
+                    position: relative;
+                    border-bottom: none;
+                    max-height: 60px;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        top: 59px;
+                        width: 100%;
+                        height: 1px;
+                        background: $gold;
+                        display: block;
+                    }
+
+                    &:after {
+                        content: "";
+                        background-image: url("/wp-content/themes/elbaeks/img/chevron--right--gold.svg");
+                        margin-left: 8px;
+                        width: 18px;
+                        height: 18px;
+                        background-repeat: no-repeat;
+                        display: inline-block;
+                        background-size: contain;
+                        transform: rotate(90deg);
+                        transform-origin: center;
+                        transition: transform 0.3s ease;
+                        position: absolute;
+                        top: 21px;
+                        right: 0;
+                        margin: auto;
+                    }
+
+                    &.openSubmenu {
+                        max-height: 520px;
+
+                        &:after {
+                            transform: rotate(-90deg);
+                        }
+                    }
+                }
+
+                >li {
+                    margin: 0;
+                    height: 100%;
+
+                    >a {
+                        @include font-size(20px);
+                    }
+
+                    li {
+                        width: 100%;
+                    }
+
+                    ul {
+                        width: 100%;
+                        margin: 0;
+
+                        a {
+                            padding-left: 10px;
+                            width: 100%;
+                        }
+                    }
+
+                    &:last-child {
+                        border-bottom: none;
+
+                        &:before {
+                            // top: 48px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 767px) {
+    .headerBar__logo svg {
+        width: 90px;
+        height: 90px;
+        min-width: 90px;
+        min-height: 90px;
+    }
+}
