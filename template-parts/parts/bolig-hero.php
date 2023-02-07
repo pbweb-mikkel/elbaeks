@@ -116,7 +116,7 @@
                     $gallery[0]['image'],
                     $title
                 ); ?>
-                <a class="launch-gallery round-btn flex flex-cy flex-cx rel" data-fancybox-trigger="property-gallery"><div class="enlarge-btn rel"></div></a>
+                <div class="launch-gallery round-btn flex flex-cy flex-cx rel" data-fancybox-trigger="property-gallery"><div class="enlarge-btn rel"></div></div>
             </div>
 
 		<?php endif; ?>
