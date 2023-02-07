@@ -16,10 +16,10 @@ class Flexyapress_API{
 	public function __construct(){
 
         $this->client_id = 'mw-service-external-client-website';
-        $this->client_realm = 'elbaeks';
-        $this->client_secret = 'OvgaOLtON4ICk9oFZq5UdjkRBKRs5R8a';
+        $this->client_realm = MW_REALM;
+        $this->client_secret = MW_CLIENT_SECRET;
         $this->base_url = $this->get_api_url();
-        $this->shop_no = 99;
+        $this->shop_no = MW_SHOP_NO;
         $this->auth_token = $this->get_auth_token();
         $this->save_images_locally = false;
         $this->captcha_site_key = '';
@@ -179,9 +179,9 @@ class Flexyapress_API{
                                 description
                                 mimeType
                                 resourceUrl(resourceType: Assets)
-                              sizeDesktop: customSizeResourceUrl(width: 1920, height: 1200)
-                              sizeTablet: customSizeResourceUrl(width: 1600, height: 1000)
-                              sizeMobile: customSizeResourceUrl(width: 1280, height: 800),
+                              sizeDesktop: customSizeResourceUrl(width: 2560, height: 1440)
+                              sizeTablet: customSizeResourceUrl(width: 1920, height: 1200)
+                              sizeMobile: customSizeResourceUrl(width: 1600, height: 1000),
                               }
                           }
                         }

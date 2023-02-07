@@ -13,7 +13,7 @@
 
     $boligHero = 'boligHero';
     $boligHero .= ($status == 'RESERVED')? ' boligHero--reserved' : '';
-
+    $gallery = get_field('gallery');
 ?>
 <div class="boligHeroWrap">
 	<div class="<?= $boligHero; ?>">
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 		<?php endif; ?>
-		<?php if ( have_rows( 'gallery' ) ) : ?>
+		<?php if(have_rows( 'gallery' ) ) : ?>
 			<div class="splide boligHeroItem boligGallery boligPhotoGallery activeMainSlider">
 				<div class="splide__arrows">
 					<button class="splide__arrow splide__arrow--prev">
@@ -50,12 +50,9 @@
 								<li class="splide__slide">
                                     <?php
                                     printf(
-                                        '<img data-src="%s" alt="%s" data-srcset="%s 1000w, %s 1600w, %s 1920w" sizes="(max-width: 1000px) 1000w, 1600w, 1920w" class="lazyload" />',
+                                        '<img data-src="%s" alt="%s" class="lazyload" />',
                                         get_sub_field( 'image' ),
-                                        $title,
-                                        get_sub_field( 'image_tablet' ),
-                                        get_sub_field( 'image_tablet' ),
-                                        get_sub_field( 'image' )
+                                        $title
                                     );
                                     /*$image = wp_is_mobile() ? str_replace('/Assets/', '/Presentation/', get_sub_field( 'image' )) : get_sub_field( 'image' );
                                     printf(
@@ -79,7 +76,7 @@
 							<li class="splide__slide">
 								<?php printf(
 									'<img data-src="%s" alt="%s" class="lazyload" />',
-									get_the_post_thumbnail_url(get_the_ID(), 'full'),
+                                    $gallery[0]['image'],
 									$title
 								); ?>
 							</li>
@@ -87,9 +84,44 @@
 					</ul>
 				</div>
 			</div>
+
+            <div id="property-gallery">
+            <?php
+            $count = 0;
+            while (have_rows('gallery')) : the_row(); $count++;
+
+                $item_id = ' id="image-item-' . $count . '"';
+                $item_class = ' class="property-gallery__item image"';
+
+                ?>
+            <a href="<?php echo get_sub_field( 'image' ); ?>" data-fancybox="property-gallery" data-type="image"<?php echo $item_id; ?><?php echo $item_class; ?>></a><?php
+                $count++;
+            endwhile;
+
+            if($floorplans){
+                foreach($floorplans as $f){
+                    $count = 1;
+                    $item_id = ' id="drawing-item-' . $count . '"';
+                    $item_class = ' class="property-gallery__item drawing"';
+                    $count++;
+                    ?>
+                <a href="<?php echo $f['image']; ?>" data-fancybox="property-gallery" data-type="image"<?php echo $item_id; ?><?php echo $item_class; ?>></a><?php
+                }
+            }
+            ?>
+            </div>
+            <div class="property-intro">
+                <?php printf(
+                    '<img data-src="%s" alt="%s" class="lazyload" />',
+                    $gallery[0]['image'],
+                    $title
+                ); ?>
+                <a class="launch-gallery round-btn flex flex-cy flex-cx rel" data-fancybox-trigger="property-gallery"><div class="enlarge-btn rel"></div></a>
+            </div>
+
 		<?php endif; ?>
 
-		<?php if ( $floorplans && ($status !== 'SOLD') ) : ?>
+		<?php if ($floorplans && ($status !== 'SOLD') ) : ?>
 			<div class="splide boligHeroItem boligGallery boligPlanGallery">
 				<div class="splide__arrows">
 					<button class="splide__arrow splide__arrow--prev">

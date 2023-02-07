@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
         concat: { 
             dist: {
-              src: ['js/lib/lazyload.js', 'js/utils.js', 'js/transition.js', 'js/map.js', 'js/animations.js', 'js/main.js', 'js/init.js'],
+              src: ['js/lib/fancybox.js', 'js/lib/lazyload.js', 'js/utils.js', 'js/transition.js', 'js/map.js', 'js/animations.js', 'js/main.js', 'js/init.js'],
               dest: 'js/build/production.js',
             },
             lib: {

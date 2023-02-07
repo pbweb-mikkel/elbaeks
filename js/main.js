@@ -1,3 +1,4 @@
+
 let cookie_block = () => {
 
     var script = document.createElement("script");
@@ -71,6 +72,7 @@ let bolig_setup = () => {
     setup_bolig_popups();
     setup_bolig_calendar();
     bolig_setup_magnifier();
+    gallery_setup();
 
     let singleNavMap = document.getElementById('seeMap');
 
@@ -98,17 +100,21 @@ let bolig_setup = () => {
     if (singleNavBilleder) {
         singleNavBilleder.addEventListener('click', (e) => {
             e.preventDefault();
+            var ww = window.innerWidth;
+            if(ww < 1200 && document.getElementById('property-gallery')){
+                jQuery('#image-item-1').trigger('click');
+            }else {
+                remove_hero_classes();
+                document.querySelector('.boligPhotoGallery').classList.add('activeMainSlider');
 
-            remove_hero_classes();
-            document.querySelector('.boligPhotoGallery').classList.add('activeMainSlider');
+                // remove_nav_classes();
+                singleNavBilleder.classList.add('singleNav--active');
 
-            // remove_nav_classes();
-            singleNavBilleder.classList.add('singleNav--active');
-
-            // gsap.set('.boligHeroPlanNav', { display: 'none' });
-            // gsap.set('.boligHeroGalleryNav', { display:'block' });
-            gsap.to(window, { duration: 0.5, scrollTo: "#bolig" });
-            // boligHero.classList.add('boligHero--activeNav');
+                // gsap.set('.boligHeroPlanNav', { display: 'none' });
+                // gsap.set('.boligHeroGalleryNav', { display:'block' });
+                gsap.to(window, {duration: 0.5, scrollTo: "#bolig"});
+                // boligHero.classList.add('boligHero--activeNav');
+            }
             if (document.getElementById('boligVideo')) document.getElementById('boligVideo').pause();
 
         });
@@ -120,19 +126,22 @@ let bolig_setup = () => {
     if (singleNavPlan) {
         singleNavPlan.addEventListener('click', (e) => {
             e.preventDefault();
+            var ww = window.innerWidth;
+            if(ww < 1200 && document.getElementById('property-gallery')){
+                jQuery('#drawing-item-1').trigger('click');
+            }else{
+                remove_hero_classes();
+                document.querySelector('.boligPlanGallery').classList.add('activeMainSlider');
 
-            remove_hero_classes();
-            document.querySelector('.boligPlanGallery').classList.add('activeMainSlider');
+                // remove_nav_classes();
+                singleNavPlan.classList.add('singleNav--active');
 
-            // remove_nav_classes();
-            singleNavPlan.classList.add('singleNav--active');
-
-            // gsap.set('.boligHeroGalleryNav', { display:'none' });
-            // gsap.set('.boligHeroPlanNav', { display:'block' });
-            gsap.to(window, { duration: 0.5, scrollTo: "#bolig" });
-            // boligHero.classList.add('boligHero--activeNav');
+                // gsap.set('.boligHeroGalleryNav', { display:'none' });
+                // gsap.set('.boligHeroPlanNav', { display:'block' });
+                gsap.to(window, { duration: 0.5, scrollTo: "#bolig" });
+                // boligHero.classList.add('boligHero--activeNav');
+            }
             if (document.getElementById('boligVideo')) document.getElementById('boligVideo').pause();
-
         });
     }
 
@@ -171,6 +180,44 @@ let bolig_setup = () => {
 
     // });
 
+};
+
+let gallery_setup = () => {
+    // ======= Gallery =======
+    console.log('setting up fancybox');
+    jQuery('[data-fancybox="property-gallery"]').fancybox({
+        idleTime  : false,
+        loop 	  : true,
+        baseClass : 'property-gallery-modal',
+        margin    : 0,
+        gutter    : 0,
+        protect   : true,
+        thumbs    : {
+            hideOnClose : false,
+            parentEl    : '.fancybox-outer'
+        },
+        buttons: [
+            "zoom",
+            //"share",
+            //"slideShow",
+            "fullScreen",
+            //"download",
+            "thumbs",
+            "close"
+        ],
+        touch : {
+            vertical : false
+        },
+        animationEffect   : "fade",
+        animationDuration : 300
+    });
+
+
+// Assign index attribute to floor plan button
+    var galleryItem = document.getElementById('drawing-item-1');
+    var galleryItemIndex = jQuery(".property-gallery__item").index(galleryItem);
+
+    jQuery('.launch-gallery-drawing').attr('data-fancybox-index', galleryItemIndex);
 };
 
 let bolig_setup_magnifier = () => {

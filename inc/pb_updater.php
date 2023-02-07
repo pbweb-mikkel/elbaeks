@@ -25,19 +25,19 @@ function pb_automatic_updates($data) {
         $update = filter_var($file->tag_name, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
         // Only return a response if the new version number is higher than the current version
 
-
         if($update > $current) {
-            $item = (object) array(
+            $item = array(
                 'new_version' => $update,
                 'url'         => 'https://github.com/'.$user.'/'.$repo,
                 'package'     => $file->assets[0]->browser_download_url,
                 'theme'            => $theme,
             );
+
             $data->response[$theme] = $item;
 
         }else{
 
-            $item = (object) array(
+            $item = array(
                 'new_version' => $current,
                 'url'         => '',
                 'package'     => '',

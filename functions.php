@@ -214,6 +214,7 @@ add_action( 'widgets_init', 'elbaeks_widgets_init' );
  * Enqueue scripts and styles.
  */
 function elbaeks_scripts() {
+    wp_enqueue_style( 'fancybox', get_stylesheet_directory_uri().'/sass/jquery.fancybox.min.css', time() );
     wp_enqueue_style( 'elbaeks-style', get_stylesheet_uri(), array(), time() );
     wp_enqueue_script('bundle', get_stylesheet_directory_uri() . '/js/build/bundle.min.js', array(), time(), true);
     wp_enqueue_script('elbaeks', get_stylesheet_directory_uri() . '/js/build/production.js', array('bundle', 'jquery'), time(), true);
@@ -2005,7 +2006,7 @@ function pb_get_access_token(){
         return get_transient('flexyapress_auth_token');
     }
 
-    $response = wp_remote_post('https://iam.mindworking.eu/auth/realms/elbaeks/protocol/openid-connect/token',['body' => ['grant_type' => 'client_credentials', 'client_id' => 'mw-service-external-client-website', 'client_secret' => 'OvgaOLtON4ICk9oFZq5UdjkRBKRs5R8a']]);
+    $response = wp_remote_post('https://iam.mindworking.eu/auth/realms/elbaeks/protocol/openid-connect/token',['body' => ['grant_type' => 'client_credentials', 'client_id' => 'mw-service-external-client-website', 'client_secret' => MW_CLIENT_SECRET]]);
     $body     = json_decode( wp_remote_retrieve_body( $response ) );
 
     if(!empty($body->access_token)){
