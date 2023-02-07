@@ -181,7 +181,7 @@ class Flexyapress_API{
                                 resourceUrl(resourceType: Assets)
                               sizeDesktop: customSizeResourceUrl(width: 2560, height: 1440)
                               sizeTablet: customSizeResourceUrl(width: 1920, height: 1200)
-                              sizeMobile: customSizeResourceUrl(width: 1600, height: 1000),
+                              sizeMobile: customSizeResourceUrl(width: 1200, height: 750),
                               }
                           }
                         }

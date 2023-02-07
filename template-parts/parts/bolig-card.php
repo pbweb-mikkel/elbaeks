@@ -13,7 +13,7 @@
                     $img = get_the_post_thumbnail_url( $id, 'large' );
                 }else{
                     $photos = get_field('gallery', $id);
-                    $img = !empty($photos[0]) ? $photos[0]['image'] : false;
+                    $img = !empty($photos[0]) ? $photos[0]['image_mobile'] : false;
                 }
                 if($img){
 
@@ -21,7 +21,7 @@
 
                     printf(
                         '<img  data-src="%s" class="lazyload" alt="%s" /></a>',
-                        str_replace('/Assets/', '/Presentation/',$img),
+                        $img,
                         'alt'
                     );
 
