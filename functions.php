@@ -1362,7 +1362,7 @@ function givbud_submit(){
         $phone = $json['area'] . $json['mobile'];
         $email = $json['email'];
         $bid = str_replace('.', '', $json['bid']);
-        $comment = urlencode($json['komentar']);
+        $comment = $json['komentar'];
         $url = "https://services.boligsystem.flexya.dk/service/v20/order?orgKey={$orgKey}&caseKey={$caseKey}&buyerActionType=MAKEABID_ORDER&name={$name}&email={$email}&phone={$phone}&makeABid={$bid}&message={$comment}";
         /*$curl = curl_init();
 		curl_setopt_array($curl, array(
@@ -1515,7 +1515,7 @@ function openhouse_submit(){
         $name = $json['name'];
         $phone = $json['area'] . $json['mobile'];
         $email = $json['email'];
-        $comment = urlencode($json['komentar']);
+        $comment = $json['komentar'];
 
         $api = new Flexyapress_API();
 
@@ -1611,7 +1611,7 @@ function kobertkartotek_submit(){
 
         $beliggenhed = rtrim(trim($json['beliggenhed']), ',');
         $beliggenhed = explode(',', $beliggenhed);
-        $address = urlencode($json['address']);
+        $address = $json['address'];
         $propertyTypes = http_build_query(['propertyTypes' => $json['ejendomstyper']]); // checkboxes
         $propertyTypes = '';
         $locations = '';
@@ -1833,7 +1833,7 @@ function skuffesalg_submit(){
         $email = $json['email'];
         $dawa_id = !empty($json['addressID']) ? $json['addressID'] : null;
         $phone = $json['area'] . $json['mobile'];
-        $address = urlencode($json['address']);
+        $address = $json['address'];
         $realtor = $json['realtor'];
         $message = "";
 
@@ -1847,7 +1847,7 @@ function skuffesalg_submit(){
 
         //$message = trim(preg_replace('/\s\s+/', ' ', $message));
 
-        $message = urldecode($message);
+        $message = $message;
 
         //$message = urlencode($message);
 
