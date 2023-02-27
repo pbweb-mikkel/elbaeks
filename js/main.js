@@ -791,6 +791,9 @@ let openhouse_form_fn = () => {
         };
 
         gsap.to('#openHouseSignup .button', { autoAlpha: 0, duration: 0.2 });
+        gsap.to('#openHouseSignup .successText', { autoAlpha: 0, duration: 0.3 }, 0.1);
+        gsap.to('#openHouseSignup .errorText', { autoAlpha: 0, duration: 0.3 }, 0.1);
+        document.getElementById('openhouse-loading').style.display = 'block';
 
         ajax.post(
             admin.ajaxUrl, {
@@ -799,6 +802,8 @@ let openhouse_form_fn = () => {
                 data: JSON.stringify(data)
             },
             function(data) {
+                data = JSON.parse(data);
+                document.getElementById('openhouse-loading').style.display = 'none';
                 if(data.success){
                     gsap.to('#openHouseSignup .successText', { autoAlpha: 1, duration: 0.3 }, 0.1);
                 }else{

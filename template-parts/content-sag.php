@@ -321,6 +321,7 @@
                 <textarea name="onsker" id="onsker" rows="5"></textarea>
             </div>
             <div class="buttonCenter">
+                <div id="openhouse-loading" style="display: none;text-align: center;"><img src="<?= get_stylesheet_directory_uri() ?>/img/loading.gif" width="40" height="40"></div>
                 <button class="button button--brown button--arrow" type="submit"><span>Tilmeld åbent hus</span></button>
                 <div class="successText">Tak, vi har registreret din tilmelding</div>
                 <div class="errorText">Der er sket en fejl og din tilmelding er muligivis ikke registreret. Du kan kontakte mægleren direkte på mail eller telefon istedet.</div>

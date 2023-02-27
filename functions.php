@@ -781,8 +781,16 @@ function update_bolig($force = false){
             update_field('case_realtor', (! empty($broker) ? $broker->email : null), $id);
             if ( ! empty($openhouses)) {
                 $oh = array_shift($openhouses);
+
+                $day = Flexyapress_Helpers::get_pretty_day_name(date('w',
+                    strtotime($oh['dateStart'])));
+                //$openHouseDate = $day.' d. '.date('d/m', strtotime($sorted_appointments[0]['dateStart'])).' kl. '.date('H:i', strtotime($sorted_appointments[0]['dateStart'])).(!empty($sorted_appointments[0]['dateEndUnix']) ? ' - '.date('H:i', $sorted_appointments[0]['dateEndUnix']) : '');
+                $openHouseDate           = $day . ' d. ' . date('d/m',
+                        strtotime($oh['dateStart'])) . ' kl. ' . date('H:i',
+                        strtotime($oh['dateStart'])) . (! empty($oh['dateEndUnix']) ? ' - ' . date('H:i',
+                            $oh['dateEndUnix']) : '');
                 update_field('open_house', ( ! empty($oh)), $id);
-                update_field('open_house_date', (! empty($oh['dateStart']) ? $oh['dateStart'] : ''), $id);
+                update_field('open_house_date', (! empty($openHouseDate) ? $openHouseDate : ''), $id);
                 update_field('open_house_signup', $oh['signupRequired'], $id);
                 update_field('open_house_signup_date', $oh['dateStart'], $id);
                 update_field('open_house_id', (! empty($oh['id']) ? $oh['id'] : ''), $id);
