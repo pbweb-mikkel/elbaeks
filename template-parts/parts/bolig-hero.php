@@ -240,6 +240,14 @@
 		<div id="map"></div>
 	</div>
 
+    <?php
+    if(get_field('open_house') && get_field('open_house_date')){
+        echo '<div class="mobile-flags">';
+        echo '<div class="flag flag-open-house openPopup '.(get_field('open_house_signup') ? 'signup' : '').'" data-target="openHouseSignup"><span>Åbent hus'.(get_field('open_house_signup') ? ' med tilmelding' : '').'</span><br><strong>'.get_field('open_house_date').' '.(get_field('open_house_signup') ? '</strong><br><span>Tilmeld dig her</span>' : '').'</div>';
+        echo '</div>';
+    }
+    ?>
+
 	<div class="boligHeroNavWrap">
 		<div class="container">
 			<div class="row">

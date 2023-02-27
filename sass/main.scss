@@ -837,6 +837,21 @@ display: none;
 	}
 }
 
+.mobile-flags{
+	display:none;
+	position: relative;
+	background:rgba(3,51,30,.7);
+	color:#DDC2AC;
+	padding:20px;
+	text-align: center;
+	cursor: pointer;
+
+	@media screen and (max-width:1199px){
+		display: block;
+	}
+
+}
+
 .boligHeroWrap{
 	position: relative;
 	overflow: hidden;
@@ -3257,6 +3272,7 @@ body:not(.home){
 	transition: .2s;
 	cursor: pointer;
 	position:relative;
+	margin-top:-85px;
 
 	&:before {
 		content: "";

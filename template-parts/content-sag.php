@@ -316,6 +316,16 @@
                 <label for="email">E-mail*</label>
                 <input type="email" id="email" name="email" required autocomplete="none">
             </div>
+            <div class="singleField singleField--autocomplete singleField--autocompleteFull singleField--singleComplete inputShowFront" data-action="adresser">
+                <label for="address-autocomplete">Adresse</label>
+                <div class="autocompleteFields">
+                    <div class="currentValueEntered"></div>
+                    <input type="text" class="valueAutocomplete" id="address-autocomplete" name="address-autocomplete" autocomplete="none" tabindex="0">
+                    <ul class="autocompleteList"></ul>
+                </div>
+                <input type="text" class="realValue" id="address" name="address" autocomplete="none" tabindex="-1">
+                <input type="hidden" id="addressID" name="addressID" autocomplete="none" tabindex="-1">
+            </div>
             <div class="singleField">
                 <label for="onsker">Kommentar</label>
                 <textarea name="onsker" id="onsker" rows="5"></textarea>

@@ -783,6 +783,7 @@ let openhouse_form_fn = () => {
             'area': openhouse_form.querySelector('#countryCode').value,
             'email': openhouse_form.querySelector('#email').value,
             'komentar': openhouse_form.querySelector('#onsker').value,
+            'address': openhouse_form.querySelector('#address').value ? openhouse_form.querySelector('#address').value : openhouse_form.querySelector('#address-autocomplete').value,
             'openHouseId':openhouse_form.querySelector('input[name="openHouseId"]').value,
             'openHouseStartTime':openhouse_form.querySelector('input[name="openHouseStartTime"]').value,
             'consentIdGlobal':openhouse_form.querySelector('input[name="consentIdGlobal"]').value,

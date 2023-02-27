@@ -1317,11 +1317,11 @@ function fremvisning_submit(){
         $realtor = '';
 
         if($date){
-            $comment .= "Ønsket dato: {$date}. ";
+            $comment .= " Ønsket dato: {$date}. ";
         }
 
         if($address){
-            $comment .= "Adresse: {$address}. ";
+            $comment .= " Adresse: {$address}. ";
         }
 
         //book_cal($orgKey, $caseKey, $date, $email, $name, $realtor, $phone, $comment, $address);
@@ -1524,6 +1524,12 @@ function openhouse_submit(){
         $phone = $json['area'] . $json['mobile'];
         $email = $json['email'];
         $comment = $json['komentar'];
+        $address = $json['address'];
+
+        if($address){
+            $comment .= " Adresse: {$address}. ";
+        }
+
 
         $api = new Flexyapress_API();
 
@@ -1532,7 +1538,7 @@ function openhouse_submit(){
             'caseNo' => $json['caseNo'],
             'email' => $email,
             'phone' => $phone,
-            'message' => $json['komentar'],
+            'message' => $comment,
             'buyerActionType' => 'OPENHOUSE_SIGNUP',
             'consentIdGlobal' => $json['consentIdGlobal'],
             'openHouseId' => $json['openHouseId'],
