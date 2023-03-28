@@ -1949,7 +1949,7 @@ function get_locations(){
 
 
 function pb_manual_update(){
-    if(is_user_logged_in() && isset($_GET['flexya_update']) && $_GET['flexya_update'] == '1'){
+    if(isset($_GET['flexya_update']) && $_GET['flexya_update'] == '1' && $_GET['key'] == '39483829395kjdlksjdls092834'){
         update_bolig(!empty($_GET['force']));
         die();
     }
