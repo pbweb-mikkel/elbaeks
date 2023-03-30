@@ -639,6 +639,7 @@ function update_bolig($force = false){
                 $boligPost = array(
                     'import_id'   => $id,
                     'post_title'  => $post_title,
+                    'post_name' => $item['caseNumber'],
                     'post_type'   => 'sag',
                     'post_status' => 'publish'
                 );
@@ -773,7 +774,13 @@ function update_bolig($force = false){
                 $item['announceHeadlineInternet'] = '';
             }
 
-            wp_update_post(['ID' => $id, 'post_status' => 'publish']);
+            $slug = $item['caseNumber'];
+
+            if($offmarket){
+                $slug = $item['id'];
+            }
+
+            wp_update_post(['ID' => $id, 'post_status' => 'publish', 'post_name' => $slug]);
 
             update_field('title', $item['announceHeadlineInternet'], $id);
             update_field('text', $item['announceTextInternet'], $id);
