@@ -703,26 +703,7 @@ function update_bolig($force = false){
                 'Rented'       => 'SOLD'
             ];
 
-            $offmarket = false;
-            if(!empty($item['announcingDates']) && is_array($item['announcingDates'])){
-                foreach ($item['announcingDates'] as $ad){
-
-                    if($ad->CaseAnnouncedType != 'Offmarket'){
-                        continue;
-                    }
-
-                    $now = time();
-
-                    if(strtotime($ad->AnnouncedDateStart) < $now){
-                        $offmarket = true;
-                    }
-
-                    if(!empty($ad->AnnouncedDateEnd) && strtotime($ad->AnnouncedDateEnd) < $now){
-                        $offmarket = false;
-                    }
-
-                }
-            }
+            $offmarket = Flexyapress_Helpers::is_offmarket($item['announcingDates']);
 
             echo 'Offmarket: '. ($offmarket ? 'Ja' : 'Nej');
 

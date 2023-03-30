@@ -853,6 +853,11 @@ class Flexyapress_API{
                             caseNumber
                             status
                             noAdvertisement
+                            announcingDates {
+                                CaseAnnouncedType
+                                AnnouncedDateStart
+                                AnnouncedDateEnd
+                            }
                           }
                         }
                       }
@@ -875,7 +880,10 @@ class Flexyapress_API{
                 if(is_array($cases) && count($cases) > 0){
                     $caseArr = [];
                     foreach ($cases as $c){
-                        if($c->noAdvertisement === true && $c->caseNumber !== '99HV-001011'){
+                        if($c->noAdvertisement === true && !Flexyapress_Helpers::is_offmarket($c->announcingDates)){
+                            continue;
+                        }
+                        if($c->status == 'BeforeSale' && !Flexyapress_Helpers::is_offmarket($c->announcingDates)){
                             continue;
                         }
                         $caseArr[] = $c;
@@ -924,6 +932,11 @@ class Flexyapress_API{
                             shopNo
                             status
                             noAdvertisement
+                            announcingDates {
+                                CaseAnnouncedType
+                                AnnouncedDateStart
+                                AnnouncedDateEnd
+                            }
                           }
                         }
                       }
@@ -995,6 +1008,11 @@ class Flexyapress_API{
                             shopNo
                             status
                             noAdvertisement
+                            announcingDates {
+                                CaseAnnouncedType
+                                AnnouncedDateStart
+                                AnnouncedDateEnd
+                            }
                           }
                         }
                       }
@@ -1066,6 +1084,11 @@ class Flexyapress_API{
                             shopNo
                             status
                             noAdvertisement
+                            announcingDates {
+                                CaseAnnouncedType
+                                AnnouncedDateStart
+                                AnnouncedDateEnd
+                            }
                           }
                         }
                       }

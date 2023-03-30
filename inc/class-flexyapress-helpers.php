@@ -497,5 +497,25 @@ class Flexyapress_Helpers{
 
     }
 
+    public static function is_offmarket($announceDates){
+        $return = false;
+        if(!empty($announceDates) && is_array($announceDates)) {
+            foreach ($announceDates as $ad) {
+                if ($ad->CaseAnnouncedType != 'Offmarket') {
+                    continue;
+                }
+                $now = time();
+                if (strtotime($ad->AnnouncedDateStart) < $now) {
+                    $return = true;
+                }
+
+                if ( ! empty($ad->AnnouncedDateEnd) && strtotime($ad->AnnouncedDateEnd) < $now) {
+                    $return = false;
+                }
+            }
+        }
+        return $return;
+    }
+
 }
 
