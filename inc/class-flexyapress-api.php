@@ -16,6 +16,7 @@ class Flexyapress_API{
 	public function __construct(){
 
         $this->client_id = 'mw-service-external-client-website';
+        //$this->client_id = 'mw-service-internal-client-pbweb';
         $this->client_realm = MW_REALM;
         $this->client_secret = MW_CLIENT_SECRET;
         $this->base_url = $this->get_api_url();
@@ -45,6 +46,11 @@ class Flexyapress_API{
                           noAdvertisement
                           status
                           shopNo
+                          announcingDates {
+                              CaseAnnouncedType
+                              AnnouncedDateStart
+                              AnnouncedDateEnd
+                            }
                           shop {
                             name
                             address
@@ -238,6 +244,11 @@ class Flexyapress_API{
                           status
                           noAdvertisement
                           shopNo
+                          announcingDates {
+                              CaseAnnouncedType
+                              AnnouncedDateStart
+                              AnnouncedDateEnd
+                            }
                           shop {
                             name
                             address
@@ -439,6 +450,11 @@ class Flexyapress_API{
                           status
                           noAdvertisement
                           shopNo
+                          announcingDates {
+                              CaseAnnouncedType
+                              AnnouncedDateStart
+                              AnnouncedDateEnd
+                            }
                           shop {
                             name
                             address
@@ -636,6 +652,11 @@ class Flexyapress_API{
                           noAdvertisement
                           lastUpdated
                           firstListingDate
+                          announcingDates {
+                              CaseAnnouncedType
+                              AnnouncedDateStart
+                              AnnouncedDateEnd
+                            }
                           statusChangeCollection {
                             to
                             from
@@ -1302,6 +1323,7 @@ class Flexyapress_API{
 	/* Get the base-url from the settings */
 	private function get_auth_url(){
         $auth_url = 'https://iam.mindworking.eu';
+        //$auth_url = 'https://keycloaktest.mindworking.eu';
 
         $auth_url = trailingslashit($auth_url);
 

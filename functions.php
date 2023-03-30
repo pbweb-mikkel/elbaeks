@@ -703,6 +703,29 @@ function update_bolig($force = false){
                 'Rented'       => 'SOLD'
             ];
 
+            $offmarket = false;
+            if(!empty($item['announcingDates']) && is_array($item['announcingDates'])){
+                foreach ($item['announcingDates'] as $ad){
+
+                    if($ad->CaseAnnouncedType != 'Offmarket'){
+                        continue;
+                    }
+
+                    $now = time();
+
+                    if(strtotime($ad->AnnouncedDateStart) < $now){
+                        $offmarket = true;
+                    }
+
+                    if(!empty($ad->AnnouncedDateEnd) && strtotime($ad->AnnouncedDateEnd) < $now){
+                        $offmarket = false;
+                    }
+
+                }
+            }
+
+            echo 'Offmarket: '. ($offmarket ? 'Ja' : 'Nej');
+
             if (array_key_exists($item['status'], $statuses)) {
                 $status = $statuses[$item['status']];
             }
@@ -777,6 +800,14 @@ function update_bolig($force = false){
             update_field('kontant', $price, $id);
             update_field('ejerudgift_pr_md', $monthlyPrice, $id);
             update_field('sagsnummer', $item['caseNumber'], $id);
+            update_field('offmarket', $offmarket, $id);
+
+            if($offmarket){
+                update_post_meta($id,'_yoast_wpseo_meta-robots-noindex', '1');
+            }else{
+                update_post_meta($id,'_yoast_wpseo_meta-robots-noindex', '2');
+            }
+
             update_field('energimaerkning', $item['energyMark'], $id);
             update_field('case_realtor', (! empty($broker) ? $broker->email : null), $id);
             if ( ! empty($openhouses)) {
@@ -2217,3 +2248,47 @@ function pb_order_sales_valuation($consent_id = '', $shopNo = '', $firstName, $l
 
     return wp_remote_post( MW_LEADS_URL, $args);
 }
+
+
+function pb_rewrite_properties() {
+    add_rewrite_rule('VIP/([^/]*)/?$', 'index.php?offmarket=$matches[1]', 'top');
+}
+add_action( 'init', 'pb_rewrite_properties');
+
+function pb_query_vars( $qvars ) {
+    $qvars[] = 'offmarket';
+    return $qvars;
+}
+add_filter( 'query_vars', 'pb_query_vars' );
+
+function pb_template_include($single){
+    global $post, $wp_query;
+
+    if ( get_query_var( 'offmarket' ) != false ) {
+
+        $caseNo = get_query_var( 'offmarket' );
+        $match = get_posts([
+            'post_type' => 'sag',
+            'numberposts' => 1,
+            'fields' => 'ids',
+            'meta_key' => 'case_key',
+            'meta_value' => $caseNo
+        ]);
+
+        if($match){
+            $match = array_shift($match);
+            wp_redirect(get_the_permalink($match));
+            die();
+        }else{
+            $wp_query->set_404();
+            status_header(404);
+            nocache_headers();
+            include( get_query_template( '404' ) );
+            die();
+        }
+
+    }
+
+    return $single;
+}
+add_filter('template_include', 'pb_template_include');

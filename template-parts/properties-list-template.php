@@ -8,9 +8,15 @@
         'post_type' => 'sag',
         'posts_per_page' => -1,
         'meta_query'    => array(
+            'relation' => 'AND',
             array(
                 'key'       => 'status',
                 'value'     => 'SOLD',
+                'compare'   => '!=',
+            ),
+            array(
+                'key'       => 'offmarket',
+                'value'     => true,
                 'compare'   => '!=',
             ),
         ),

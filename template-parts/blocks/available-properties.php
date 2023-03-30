@@ -9,6 +9,11 @@
                 'value'     => 'SOLD',
                 'compare'   => '!=',
             ),
+            array(
+                'key'       => 'offmarket',
+                'value'     => true,
+                'compare'   => '!=',
+            ),
         ),
     );
 
