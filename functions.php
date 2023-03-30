@@ -730,6 +730,10 @@ function update_bolig($force = false){
                 $status = $statuses[$item['status']];
             }
 
+            if(!$offmarket && $item['status'] == 'BeforeSale'){
+                continue;
+            }
+
             $openhouses = Flexyapress_Helpers::format_openhouse_dates($item['openHouses']);
             $broker     = Flexyapress_Helpers::get_broker((object)$item);
 
