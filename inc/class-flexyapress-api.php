@@ -959,7 +959,10 @@ class Flexyapress_API{
                 if(is_array($cases) && count($cases) > 0){
                     $caseArr = [];
                     foreach ($cases as $c){
-                        if($c->noAdvertisement === true){
+                        if($c->noAdvertisement === true && !Flexyapress_Helpers::is_offmarket($c->announcingDates)){
+                            continue;
+                        }
+                        if($c->status == 'BeforeSale' && !Flexyapress_Helpers::is_offmarket($c->announcingDates)){
                             continue;
                         }
                         $caseArr[] = $c;
@@ -981,7 +984,7 @@ class Flexyapress_API{
 
     }
 
-    public function get_business_cases($amount = 9999, $updated_after = "1999-01-01", $status = '[ForSale,Sold,UnderSale,FinallyTrade]'){
+    public function get_business_cases($amount = 9999, $updated_after = "1999-01-01", $status = '[ForSale,Sold,UnderSale,BeforeSale,FinallyTrade]'){
         $args = $this->get_header_args();
         $status_string = '';
 
@@ -1035,7 +1038,10 @@ class Flexyapress_API{
                 if(is_array($cases) && count($cases) > 0){
                     $caseArr = [];
                     foreach ($cases as $c){
-                        if($c->noAdvertisement === true){
+                        if($c->noAdvertisement === true && !Flexyapress_Helpers::is_offmarket($c->announcingDates)){
+                            continue;
+                        }
+                        if($c->status == 'BeforeSale' && !Flexyapress_Helpers::is_offmarket($c->announcingDates)){
                             continue;
                         }
                         $caseArr[] = $c;
@@ -1111,7 +1117,10 @@ class Flexyapress_API{
                 if(is_array($cases) && count($cases) > 0){
                     $caseArr = [];
                     foreach ($cases as $c){
-                        if($c->noAdvertisement === true){
+                        if($c->noAdvertisement === true && !Flexyapress_Helpers::is_offmarket($c->announcingDates)){
+                            continue;
+                        }
+                        if($c->status == 'BeforeSale' && !Flexyapress_Helpers::is_offmarket($c->announcingDates)){
                             continue;
                         }
                         $caseArr[] = $c;
