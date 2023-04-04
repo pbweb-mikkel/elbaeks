@@ -777,7 +777,7 @@ function update_bolig($force = false){
             $slug = $item['caseNumber'];
 
             if($offmarket){
-                $slug = $item['id'];
+                $slug = sanitize_title($address);
             }
 
             wp_update_post(['ID' => $id, 'post_status' => 'publish', 'post_name' => $slug]);
