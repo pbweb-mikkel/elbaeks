@@ -793,6 +793,8 @@ function update_bolig($force = false){
             update_field('ejerudgift_pr_md', $monthlyPrice, $id);
             update_field('sagsnummer', $item['caseNumber'], $id);
             update_field('offmarket', $offmarket, $id);
+            update_field('erhvervsareal', $item['totalCommercialArea'], $id);
+
 
             if($offmarket){
                 update_post_meta($id,'_yoast_wpseo_meta-robots-noindex', '1');
