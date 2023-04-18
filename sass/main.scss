@@ -951,6 +951,22 @@ display: none;
 	}
 	@include screen(desktop){
 		padding-left: 0px;
+
+		.boligData__table__single{
+			display: flex;
+
+			span:first-child{
+				width: 240px;
+				flex-basis: 240px;
+				min-width: 0;
+			}
+
+			span{
+				//width: auto;
+				min-width: auto;
+			}
+		}
+
 	}
 }
 .boligData__table__single .energyType{

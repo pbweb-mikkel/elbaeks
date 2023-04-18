@@ -50,7 +50,10 @@
                             <div class="houseData">
                                 <span>Boligtype:  <?php the_field( 'boligtype', $id ); ?></span>
                                 <?php
-                                if((get_field( 'bolig__kld__grund', $id ) !== "0") && (get_field( 'kld', $id ) !== "0")): ?>
+                                if((get_field( 'bolig__kld__grund', $id ) !== "0") && (get_field( 'erhvervsareal', $id ) !== "0") && (get_field( 'kld', $id ) !== "0")): ?>
+                                    <span>Bolig / erhv. / kld:  <?php echo get_field( 'bolig__kld__grund', $id ) . ' / ' . get_field( 'erhvervsareal', $id ) . ' / ' . get_field( 'kld', $id ); ?> m<sup>²</sup></span>
+                                    <?php $found = true; ?>
+                                <?php elseif((get_field( 'bolig__kld__grund', $id ) !== "0") && (get_field( 'kld', $id ) !== "0")): ?>
                                     <span>Bolig / kld:  <?php echo get_field( 'bolig__kld__grund', $id ) . ' / ' . get_field( 'kld', $id ); ?> m<sup>²</sup></span>
                                     <?php $found = true; ?>
                                 <?php elseif(get_field( 'bolig__kld__grund', $id ) !== "0"): ?>

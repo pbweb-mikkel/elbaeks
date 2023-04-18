@@ -1,7 +1,11 @@
 <?php 
 	$bolingstring = '';
 	$boligkvm = '';
-	if(get_field( 'bolig__kld__grund' ) && get_field( 'kld' ) && get_field( 'grund' )){
+
+    if(get_field( 'bolig__kld__grund' ) && get_field( 'kld' ) && get_field( 'grund' ) && get_field('erhvervsareal')){
+        $bolingstring = "Bolig / erhv. / kld. / grund:";
+        $boligkvm = get_field( 'bolig__kld__grund' ). ' / ' . get_field('erhvervsareal') . ' / ' . get_field( 'kld' ). ' / ' . get_field( 'grund' ) . ' m²';
+    }else if(get_field( 'bolig__kld__grund' ) && get_field( 'kld' ) && get_field( 'grund' )){
 		$bolingstring = "Bolig / kld. / grund:";
 		$boligkvm = get_field( 'bolig__kld__grund' ) . ' / ' . get_field( 'kld' ). ' / ' . get_field( 'grund' ) . ' m²';
 	}else if(get_field( 'bolig__kld__grund' ) && get_field( 'kld' ) && get_field( 'grund' ) == "0"){
