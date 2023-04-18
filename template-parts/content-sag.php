@@ -59,12 +59,6 @@
 										<span><?php echo $boligkvm; ?></span>
 									</div>
 								<?php endif; ?>
-                                <?php if(get_field( 'erhvervsareal' )): ?>
-                                    <div class="boligData__table__single">
-                                        <span>Erhvervsareal:</span>
-                                        <span><?php the_field( 'erhvervsareal' ); ?> m²</span>
-                                    </div>
-                                <?php endif; ?>
 								<?php if(get_field( 'antal_rum' )): ?>
 									<div class="boligData__table__single">
 										<span>Antal rum:</span>
