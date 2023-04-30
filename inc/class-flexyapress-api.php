@@ -1156,19 +1156,23 @@ class Flexyapress_API{
         //echo 'Businesss Rental: '. (microtime(true) - $start).'<br>';
         $api_business_rental_cases = $this->get_business_rental_cases($amount, $updated_since);
         //echo 'Done: '. (microtime(true) - $start).'<br>';
-        if($api_rental_cases){
-            $api_cases = array_merge($api_cases, $api_rental_cases);
-        }
 
-        if($api_business_cases){
-            $api_cases = array_merge($api_cases, $api_business_cases);
-        }
+        if(is_array($api_cases)) {
+            if ($api_rental_cases && is_array($api_rental_cases)) {
+                $api_cases = array_merge($api_cases, $api_rental_cases);
+            }
 
-        if($api_business_rental_cases){
-            $api_cases = array_merge($api_cases, $api_business_rental_cases);
-        }
+            if ($api_business_cases && is_array($api_business_cases)) {
+                $api_cases = array_merge($api_cases, $api_business_cases);
+            }
 
-        return $api_cases;
+            if ($api_business_rental_cases && is_array($api_business_rental_cases)) {
+                $api_cases = array_merge($api_cases, $api_business_rental_cases);
+            }
+            return $api_cases;
+        }else{
+            return [];
+        }
 
     }
 

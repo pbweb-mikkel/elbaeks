@@ -537,6 +537,12 @@ function update_bolig($force = false){
     $start = microtime(true);
     $bolig = $api->get_all_cases($force);
 
+    if(!$bolig || !is_array($bolig)){
+        echo 'Error in API. Aborting';
+        var_dump($bolig);
+        die();
+    }
+
     $terms = get_terms( 'types', array(
         'hide_empty' => false,
     ) );
