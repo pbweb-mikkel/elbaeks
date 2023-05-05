@@ -90,12 +90,15 @@
             $count = 0;
             while (have_rows('gallery')) : the_row(); $count++;
 
+                if($status == 'SOLD' && $count > 1){
+                    continue;
+                }
+
                 $item_id = ' id="image-item-' . $count . '"';
                 $item_class = ' class="property-gallery__item image"';
 
                 ?>
             <a href="<?php echo get_sub_field( 'image' ); ?>" data-fancybox="property-gallery" data-type="image"<?php echo $item_id; ?><?php echo $item_class; ?>></a><?php
-                $count++;
             endwhile;
 
             if($floorplans){
