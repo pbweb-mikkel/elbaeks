@@ -101,7 +101,7 @@
             <a href="<?php echo get_sub_field( 'image' ); ?>" data-fancybox="property-gallery" data-type="image"<?php echo $item_id; ?><?php echo $item_class; ?>></a><?php
             endwhile;
 
-            if($floorplans){
+            if($floorplans && $status != 'SOLD'){
                 foreach($floorplans as $f){
                     $count = 1;
                     $item_id = ' id="drawing-item-' . $count . '"';
