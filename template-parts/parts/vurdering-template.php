@@ -11,11 +11,11 @@
 				<label for="navn">Navn*</label>
 				<input type="text" id="navn" name="navn" required autocomplete="none">
 			</div>
-			<div class="singleField singleField--autocomplete singleField--autocompleteFull singleField--singleComplete" data-action="adresser">
+			<div class="singleField singleField--autocomplete singleField--autocompleteFull singleField--singleComplete inputShowFront" data-action="adresser">
 				<label for="address-autocomplete">Adresse*</label>
 				<div class="autocompleteFields">
 					<div class="currentValueEntered"></div>
-					<input type="text" class="valueAutocomplete" id="address-autocomplete" name="address-autocomplete" autocomplete="none">
+					<input type="text" class="valueAutocomplete" id="address-autocomplete" name="address-autocomplete" tabindex="0" autocomplete="none">
 					<ul class="autocompleteList"></ul>
 				</div>
                 <input type="text" class="realValue" id="address" name="address" autocomplete="none" tabindex="-1">

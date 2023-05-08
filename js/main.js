@@ -530,10 +530,8 @@ let vurderingForm_form_fn = () => {
         opener.addEventListener('click', (e) => {
             e.preventDefault();
             let target = opener.getAttribute('data-target');
-            console.log(target);
             gsap.set('#' + target, { pointerEvents: 'all' });
             gsap.to('#' + target, { autoAlpha: 1, duration: 0.3 });
-
         });
     }
 
@@ -565,9 +563,16 @@ let vurderingForm_form_fn = () => {
             realtor = document.querySelector('#vurdering_form input[name="realtor"]:checked').value;
         }
 
+        var address = vurdering_form.querySelector('#address').value;
+        if(!address){
+            alert('Du mangler at indtaste din addresse');
+            vurdering_form.querySelector('#address-autocomplete').focus();
+            return false;
+        }
+
         let data = {
             'name': vurdering_form.querySelector('#navn').value,
-            'address': vurdering_form.querySelector('#address').value,
+            'address': address,
             'addressID': vurdering_form.querySelector('#addressID').value,
             'mobile': vurdering_form.querySelector('#telefon').value,
             'area': vurdering_form.querySelector('#countryCode').value,
