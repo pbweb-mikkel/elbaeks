@@ -326,6 +326,35 @@ function acf_iris_palette(){
 }
 add_action( 'admin_print_scripts', 'acf_iris_palette', 90 );
 
+add_action('wp_head', 'add_case_og_image', 2);
+function add_case_og_image(){
+    global $post;
+    if(get_post_type() != 'sag'){
+        return;
+    }
+
+    $photos = get_field('gallery', $post->id);
+    $img = !empty($photos[0]) ? $photos[0]['image_mobile'] : false;
+
+    if($img){
+        echo '<meta property="og:image:secure_url" content="'. esc_attr( $img ) .'" /> ';
+        echo '<meta property="og:image" content="'. esc_attr( $img ) .'" /> ';
+    }else if(has_post_thumbnail()) {
+        $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large' );
+        echo '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '"/>';
+        echo '<meta property="og:image:secure_url" content="'. esc_attr( $thumbnail_src[0] ) .'" /> ';
+    }
+
+    if($title = get_field('title')){
+        echo '<meta property="og:description" content="'. strip_tags($title) .'" /> ';
+    }else if($excerpt = get_the_excerpt()){
+        echo '<meta property="og:description" content="'. strip_tags($excerpt) .'" /> ';
+    }
+
+
+}
+
+
 class Custom_post_type{
 
     function __construct( $name, $singular, $icon, $archive, $tax, $supports, $public, $permalink, $exclude) {
