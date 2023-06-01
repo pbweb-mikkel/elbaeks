@@ -337,8 +337,8 @@ function add_case_og_image(){
     $img = !empty($photos[0]) ? $photos[0]['image_mobile'] : false;
 
     if($img){
-        echo '<meta property="og:image:secure_url" content="'. esc_attr( $img ) .'" /> ';
-        echo '<meta property="og:image" content="'. esc_attr( $img ) .'" /> ';
+        echo '<meta property="og:image:secure_url" content="'.  $img  .'" /> ';
+        echo '<meta property="og:image" content="'. $img  .'" /> ';
     }else if(has_post_thumbnail()) {
         $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large' );
         echo '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '"/>';
