@@ -3288,7 +3288,7 @@ body:not(.home){
 	transition: .2s;
 	cursor: pointer;
 	position:relative;
-	margin-top:-85px;
+	//margin-top:-85px;
 
 	&:before {
 		content: "";
@@ -3362,6 +3362,22 @@ body:not(.home){
 
 	.property-intro{
 		display: flex;
+		height: calc(100% - 128px);
+	}
+}
+
+
+@media screen and (max-width: 980px){
+
+	.property-intro{
+		height: calc(100% - 100px);
+	}
+}
+
+
+@media screen and (max-width: 470px){
+	.property-intro{
+		height: calc(100vh - 160px);
 	}
 }
 
