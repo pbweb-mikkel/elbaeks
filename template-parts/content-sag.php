@@ -1,7 +1,7 @@
 <?php 
 	$bolingstring = '';
 	$boligkvm = '';
-
+    $status = get_field('status');
     if(get_field( 'bolig__kld__grund' ) && get_field( 'kld' ) && get_field( 'grund' ) && get_field('erhvervsareal')){
         $bolingstring = "Bolig / erhv. / kld. / grund:";
         $boligkvm = get_field( 'bolig__kld__grund' ). ' / ' . get_field('erhvervsareal') . ' / ' . get_field( 'kld' ). ' / ' . get_field( 'grund' ) . ' m²';
@@ -106,7 +106,7 @@
 										'<div class="buttonLeft"><a href="https://www.raadtilpenge.dk/Gode-raad/boliglaan/landingsside" target="__blank" class="boligData__tjek">Tjek boliglån</a></div>'
 									);
 							 ?>
-							 <?php if(get_field( 'status' ) !== 'SOLD'): ?>
+							 <?php if(!in_array($status, ['SOLD', 'RESERVED'])): ?>
 								 <div class="buttonFull">
 									 <a href="#" class="button button--green button--arrow openPopup" data-target="fremvisning"><span>Bestil fremvisning</span></a>
 									 <a href="#" class="button button--green button--arrow openPopup" data-target="givBud"><span>Giv et bud</span></a>
