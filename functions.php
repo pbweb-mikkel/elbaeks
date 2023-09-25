@@ -1696,13 +1696,14 @@ function kobertkartotek_submit(){
             }
         }
 
+        /*
         if($beliggenhed){
             foreach ($beliggenhed as $b){
                 $locations .= '&locations='.$b;
             }
         }
-
         $url = "https://services.boligsystem.flexya.dk/service/v20/setSearchAgent?orgKey={$orgKey}&name={$name}&email={$email}&phone={$phone}&message={$onsker}&minPrice={$minPrice}&maxPrice={$maxPrice}&minLandSize={$minLandSize}&maxLandSize={$maxLandSize}&minPropertySize={$minSize}&maxPropertySize={$maxSize}&minRooms=0&address={$address}{$locations}{$propertyTypes}&customerAddress={$address}";
+        */
         /*
         $response = wp_remote_post($url, array(
             'headers' => array(

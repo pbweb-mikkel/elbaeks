@@ -100,16 +100,19 @@
                                 </ul>
                             </div> 
                         </div>
-                        <!--<div class="singleField singleField--autocomplete singleField--autocompleteFull" data-action="adresser">-->
-                        <div class="singleField singleField--autocomplete singleField--autocompleteFull" data-action="locations">
+                        <!--<div class="singleField singleField--autocomplete singleField--autocompleteFull" data-action="locations">
                             <label for="beliggenhed">Beliggenhed*</label>
                             <div class="autocompleteFields">
                                 <input type="text" class="realValue" id="beliggenhed" name="beliggenhed" required autocomplete="none">
                                 <div class="currentValueEntered">Skriv postnummer eller by – gerne flere</div>
                                 <input type="text" class="valueAutocomplete beliggenhed" autocomplete="none">
-                                <!-- <input type="text" class="valueAutocomplete beliggenhed" placeholder="Skriv postummer eller by – gerne flere"> -->
                                 <ul class="autocompleteList"></ul>
                             </div>
+                        </div>-->
+
+                        <div class="singleField">
+                            <label for="navn">Beliggenhed*</label>
+                            <input type="text" id="beliggenhed" name="beliggenhed" required autocomplete="none">
                         </div>
 
                         <h4>Ejendomstyper</h4>
