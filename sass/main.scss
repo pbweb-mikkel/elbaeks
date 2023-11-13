@@ -2189,14 +2189,14 @@ display: none;
 			padding-left: 60px;
 			padding-right: 10px;
 			position: relative;
-			height: 60px;
+			padding-block:10px;
 			display: flex;
 			align-items: center;
 			span{
 				color: $ac;
 				@include font-size(18px);
 				font-family: $roman;
-				line-height: 1;
+				line-height: 1.2;
 			}
 			&:before{
 				content:"";
